@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pi Web Agent</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='24' font-size='24'%3E%CF%80%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="glass" aria-hidden="true"></div>
+  <div id="rain" aria-hidden="true"></div>
+
+  <div id="app">
+    <aside id="sidebar">
+      <div class="sidebar-head">
+        <div class="brand"><span class="brand-mark">π</span> Pi Web Agent</div>
+        <button id="btn-new-session" class="btn btn-primary btn-sm" title="New session">+ New</button>
+      </div>
+      <div class="sidebar-scroll" id="session-list"></div>
+      <div class="sidebar-foot">
+        <div class="field">
+          <label for="model-select">Model</label>
+          <select id="model-select"></select>
+        </div>
+        <div class="field">
+          <label for="thinking-select">Thinking</label>
+          <select id="thinking-select"></select>
+        </div>
+        <div class="cwd" id="cwd-label" title="Working directory"></div>
+        <div class="conn" id="conn-label">connecting…</div>
+      </div>
+    </aside>
+
+    <main id="main">
+      <header id="topbar">
+        <div class="topbar-title" id="session-title">Session</div>
+        <div class="topbar-actions">
+          <button id="btn-export" class="btn" title="Export session to HTML">Export</button>
+          <button id="btn-restart" class="btn" title="Restart the pi process">Restart agent</button>
+          <button id="btn-shutdown" class="btn btn-danger" title="Shut down the server (like 停止.bat)">关闭服务</button>
+        </div>
+      </header>
+
+      <div id="messages" aria-live="polite"></div>
+
+      <footer id="composer">
+        <div id="attachments"></div>
+        <div class="composer-box">
+          <textarea id="input" rows="1" placeholder="Ask pi to build, edit, or explore… (Enter to send, Shift+Enter for newline, paste images)"></textarea>
+          <button id="btn-send" class="btn btn-primary" title="Send">Send</button>
+          <button id="btn-abort" class="btn btn-danger" title="Stop the agent" hidden>Stop</button>
+        </div>
+        <div id="statusbar">
+          <span class="stat" id="stat-streaming"></span>
+          <span class="stat" id="stat-model"></span>
+          <span class="stat" id="stat-thinking"></span>
+          <span class="stat" id="stat-usage"></span>
+          <span class="stat" id="stat-context"></span>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <div id="toast-root"></div>
+  <div id="dialog-root"></div>
+  <div id="conn-banner" hidden>⚠️ 服务已断开 — 双击 <b>启动.bat</b> 重新启动</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
